@@ -112,6 +112,7 @@ export default function App() {
           totalRisk={computeTotalRisk(obligations)}
           companyName={company.nom_complet || company.nom_raison_sociale}
           siren={siren}
+          obligations={obligations}
           onSubmit={handleEmailSubmit}
         />
       )}

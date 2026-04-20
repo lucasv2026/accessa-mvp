@@ -11,37 +11,101 @@ export default function Landing({ onSearch, loading, error }) {
 
   return (
     <main className="landing">
-      {/* HERO */}
+
+      {/* ===== HERO ===== */}
       <section className="hero">
-        <span className="hero-badge">Conformité TPE & PME</span>
-        <h1>Votre entreprise est-elle vraiment en règle ?</h1>
-        <p className="hero-sub">
-          DUERP, URSSAF, RC Pro, RGPD, décennale, HACCP… <strong>Chaque secteur a ses obligations.</strong> Une seule
-          manquante peut bloquer un contrat, déclencher une amende ou arrêter votre activité.
-        </p>
-        <form onSubmit={handleSubmit} className="search-form">
-          <div className="search-box">
-            <input
-              type="text"
-              placeholder="Votre SIREN (9 chiffres)"
-              value={siren}
-              onChange={e => { setSiren(e.target.value) }}
-              maxLength={11}
-            />
-            <button type="submit" disabled={loading}>
-              {loading ? '...' : 'Vérifier'}
-            </button>
+        <div className="hero-inner">
+          <div className="hero-badge">
+            <span className="hero-badge-dot" />
+            Conformité administrative TPE & PME
           </div>
-          {error && <p className="error">{error}</p>}
-          <div className="trust-row">
-            <span>✓ Gratuit</span>
-            <span>✓ Résultat instantané</span>
-            <span>✓ Sans inscription</span>
+
+          <h1 className="hero-h1">
+            Votre entreprise est-elle<br />
+            <span className="hero-h1-accent">vraiment en règle ?</span>
+          </h1>
+
+          <p className="hero-sub">
+            DUERP, URSSAF, RC&nbsp;Pro, RGPD, décennale, HACCP —{' '}
+            <strong>chaque secteur a ses obligations.</strong> Une seule manquante
+            peut bloquer un contrat, déclencher une amende ou arrêter votre activité.
+          </p>
+
+          <form onSubmit={handleSubmit} className="hero-form">
+            <div className="hero-field-wrap">
+              <svg className="hero-field-icon" width="18" height="18" viewBox="0 0 18 18" fill="none">
+                <rect x="1.5" y="3.5" width="15" height="12" rx="2" stroke="#a1a1aa" strokeWidth="1.4" />
+                <path d="M1.5 7.5h15" stroke="#a1a1aa" strokeWidth="1.4" />
+                <path d="M5.5 1.5v2M12.5 1.5v2" stroke="#a1a1aa" strokeWidth="1.4" strokeLinecap="round" />
+              </svg>
+              <input
+                type="text"
+                className="hero-field"
+                placeholder="Votre SIREN (9 chiffres)"
+                value={siren}
+                onChange={e => setSiren(e.target.value)}
+                maxLength={11}
+              />
+              <button type="submit" className="hero-cta" disabled={loading}>
+                {loading ? (
+                  <span className="hero-cta-spinner" />
+                ) : (
+                  <>
+                    Analyser
+                    <svg width="15" height="15" viewBox="0 0 15 15" fill="none">
+                      <path d="M2.5 7.5h10M9 4l3.5 3.5L9 11" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
+                    </svg>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {error && <p className="hero-error">{error}</p>}
+
+            <div className="hero-trust">
+              <span className="hero-trust-item">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                  <path d="M2 6.5l3 3 6-6" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Gratuit
+              </span>
+              <span className="hero-trust-sep">·</span>
+              <span className="hero-trust-item">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                  <path d="M2 6.5l3 3 6-6" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Résultat en 5 secondes
+              </span>
+              <span className="hero-trust-sep">·</span>
+              <span className="hero-trust-item">
+                <svg width="13" height="13" viewBox="0 0 13 13" fill="none">
+                  <path d="M2 6.5l3 3 6-6" stroke="#16a34a" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                </svg>
+                Sans inscription
+              </span>
+            </div>
+          </form>
+
+          <div className="hero-stats">
+            <div className="hero-stat">
+              <span className="hero-stat-num">40+</span>
+              <span className="hero-stat-lbl">obligations analysées</span>
+            </div>
+            <div className="hero-stat-sep" />
+            <div className="hero-stat">
+              <span className="hero-stat-num">8</span>
+              <span className="hero-stat-lbl">secteurs couverts</span>
+            </div>
+            <div className="hero-stat-sep" />
+            <div className="hero-stat">
+              <span className="hero-stat-num">0 €</span>
+              <span className="hero-stat-lbl">pour vérifier</span>
+            </div>
           </div>
-        </form>
+        </div>
       </section>
 
-      {/* SECTORS */}
+      {/* ===== SECTORS ===== */}
       <section className="sectors">
         <div className="sectors-inner">
           <p className="section-badge">Expertise par secteur</p>
@@ -59,7 +123,7 @@ export default function Landing({ onSearch, loading, error }) {
         </div>
       </section>
 
-      {/* FEATURES */}
+      {/* ===== FEATURES ===== */}
       <section className="features">
         <div className="features-inner">
           <p className="section-badge">Comment ça marche</p>
@@ -90,7 +154,7 @@ export default function Landing({ onSearch, loading, error }) {
         </div>
       </section>
 
-      {/* NETWORK */}
+      {/* ===== NETWORK ===== */}
       <section className="network">
         <div className="network-inner">
           <p className="network-badge">Le réseau Accessa</p>
@@ -111,7 +175,7 @@ export default function Landing({ onSearch, loading, error }) {
         </div>
       </section>
 
-      {/* COMPTABLE */}
+      {/* ===== COMPTABLE ===== */}
       <section className="comptable" id="comptable">
         <div className="comptable-inner">
           <p className="section-badge">Pour les cabinets</p>
@@ -127,7 +191,7 @@ export default function Landing({ onSearch, loading, error }) {
         </div>
       </section>
 
-      {/* PRICING */}
+      {/* ===== PRICING ===== */}
       <section className="pricing" id="pricing">
         <div className="pricing-inner">
           <h2>Un prix clair qui évolue avec vous</h2>
@@ -177,6 +241,7 @@ export default function Landing({ onSearch, loading, error }) {
           <p className="price-note">Cabinet : 149 €/mois pour 20 clients, puis 5 €/client. Tous les plans incluent 14 jours d'essai gratuit.</p>
         </div>
       </section>
+
     </main>
   )
 }
